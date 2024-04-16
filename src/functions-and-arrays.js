@@ -58,13 +58,32 @@ function sum() {}
 // Level 1: Array of numbers
 const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
 
-function averageNumbers() {}
+function averageNumbers(numbers) {}
+  if (numbers.length === 0) {
+    return null;
+  }
+  const sum = numbers.reduce(function(acc, curr) {
+    return acc + curr;
+  }, 0);
 
-
+  const average = sum / numbers.length;
+  return average;
+}
 // Level 2: Array of strings
 const wordsArr = ['seat', 'correspond', 'linen', 'motif', 'hole', 'smell', 'smart', 'chaos', 'fuel', 'palace'];
 
-function averageWordLength() { }
+function averageWordLength(words) { }
+if (words.length === 0) {
+  return null;
+}
+
+const sumLengths = words.reduce(function(acc, curr) {
+  return acc + curr.length;
+}, 0);
+
+const averageLength = sumLengths / words.length;
+return averageLength;
+}
 
 // Bonus - Iteration #4.1
 function avg() {}
@@ -84,16 +103,43 @@ const wordsUnique = [
   'bring'
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(arr) {
+  if (arr.length === 0) {
+    return [];
+  }
 
+  const uniqueArray = arr.filter(function(item, index) {
+    return arr.indexOf(item) === index;
+  });
 
+  return uniqueArray;
+}
+const wordsUnique = [
+  'crab',
+  'poison',
+  'contagious',
+  'simple',
+  'bring',
+  'sharp',
+  'playground',
+  'poison',
+  'communion',
+  'simple',
+  'bring'
+];
+
+console.log(uniquifyArray(wordsUnique)); 
 
 // Iteration #6: Find elements
 const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
 
-function doesWordExist() {}
+function doesWordExist(arr, word) {
+  return arr.includes(word);
+}
 
-
+const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
+const wordToFind = 'subset';
+console.log(doesWordExist(wordsFind, wordToFind)); 
 
 // Iteration #7: Count repetition
 const wordsCount = [
@@ -110,9 +156,33 @@ const wordsCount = [
   'matter'
 ];
 
-function howManyTimes() {}
+function howManyTimes(arr, word) {
+  let count = 0;
 
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === word) {
+      count++;
+    }
+  }
 
+  return count;
+}
+
+const wordsCount = [
+  'machine',
+  'matter',
+  'subset',
+  'trouble',
+  'starting',
+  'matter',
+  'eating',
+  'matter',
+  'truth',
+  'disobedience',
+  'matter'
+];
+const wordToCount = 'matter';
+console.log(howManyTimes(wordsCount, wordToCount));
 
 // Iteration #8: Bonus
 const matrix = [
@@ -141,8 +211,6 @@ const matrix = [
 function greatestProduct() {}
 
 
-
-
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
 if (typeof module !== 'undefined') {
@@ -162,4 +230,3 @@ if (typeof module !== 'undefined') {
 }
 
 
-bbbb
